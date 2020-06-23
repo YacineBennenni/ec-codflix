@@ -1,0 +1,20 @@
+#parse("dashboard.html")
+#@mainLayout()
+
+<h1>A propos</h1>
+<div class="media-detail">
+    <div class="title">
+        $media.getTitle()
+        <HR class="separateur">
+    </div>
+    <div>
+        $media.getReleaseDate()
+    </div>
+    <div>
+        $media.getSummary()
+    </div>
+
+</div>
+
+
+#end
