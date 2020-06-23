@@ -1,19 +1,25 @@
 #parse("dashboard.html")
 #@mainLayout()
 
-<h1>A propos</h1>
 <div class="media-detail">
-    <div class="title">
+    <h1>A propos :</h1>
+    <h2 class="title">
         $media.getTitle()
-        <HR class="separateur">
+    </h2>
+    <HR class="separateur">
+    <div class="media-video">
+        <iframe allowfullscreen="" frameborder="0"
+                src="$media.getTrailerUrl()" ></iframe>
     </div>
     <div>
         $media.getReleaseDate()
+        <h4 class="synopsis-title">Synopsis :</h4>
     </div>
     <div>
-        $media.getSummary()
+        <div>
+            <p class="synopsis-p">$media.getSummary()</p>
+        </div>
     </div>
-
 </div>
 
 

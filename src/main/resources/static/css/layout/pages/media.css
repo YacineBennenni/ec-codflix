@@ -69,5 +69,17 @@
 .media-detail .separateur{
     width: 10%;
     height: 1px;
-    background: red;
+    background: #f72035;
+}
+.media-video{
+    text-align: center;
+}
+.media-detail .synopsis-title{
+    font-weight: 600;
+    margin-top: 2%;
+    color: #f72035;
+}
+.media-detail .synopsis-p{
+    padding: 1%;
+    background-color: #80808029;
 }
