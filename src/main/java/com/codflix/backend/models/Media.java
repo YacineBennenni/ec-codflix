@@ -1,6 +1,8 @@
 package com.codflix.backend.models;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class Media {
     private int id;
@@ -79,6 +81,14 @@ public class Media {
 
     public Date getReleaseDate() {
         return releaseDate;
+    }
+
+    // Return only the year of the date
+    public int getReleaseYear() {
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+        cal.setTime(releaseDate);
+        int year = cal.get(Calendar.YEAR);
+        return year;
     }
 
     public void setReleaseDate(Date releaseDate) {

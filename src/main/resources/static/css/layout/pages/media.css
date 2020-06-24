@@ -83,3 +83,12 @@
     padding: 1%;
     background-color: #80808029;
 }
+.media-detail .date{
+    display: inline-block;
+    background-color: #f72035;
+    padding: 0.2%;
+    color: white;
+    font-weight: 600;
+    border-radius: 2px;
+}
+
