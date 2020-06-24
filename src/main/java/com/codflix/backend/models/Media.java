@@ -1,5 +1,7 @@
 package com.codflix.backend.models;
 
+import com.codflix.backend.features.genre.GenreDao;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -13,6 +15,7 @@ public class Media {
     private Date releaseDate;
     private String summary;
     private String trailerUrl;
+    private GenreDao genredao = new GenreDao();
 
     public Media(int id, int genreId, String title, String type, String status, Date releaseDate, String summary, String trailerUrl) {
         this.id = id;
@@ -83,12 +86,21 @@ public class Media {
         return releaseDate;
     }
 
-    // Return only the year of the date
+    // Year of the date
     public int getReleaseYear() {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
         cal.setTime(releaseDate);
         int year = cal.get(Calendar.YEAR);
         return year;
+    }
+
+    //Return Genre name with genre id
+    public String getGenre() {
+        for (Genre genre : genredao.getAllGenres()){
+            if (genre.getId() == this.genreId)
+                return genre.getName();
+        }
+        return null;
     }
 
     public void setReleaseDate(Date releaseDate) {

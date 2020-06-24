@@ -2,10 +2,9 @@
 #@mainLayout()
 
 <div class="media-detail">
-    <h1>A propos :</h1>
-    <h2 class="title">
+    <h1 class="title">
         $media.getTitle()
-    </h2>
+    </h1>
     <HR class="separateur">
     <div class="media-video">
         <iframe allowfullscreen="" frameborder="0"
@@ -14,6 +13,7 @@
     <div>
         <div>
             <p class="date">$media.getType() sorti en $media.getReleaseYear()</p>
+            <p>Genre : $media.getGenre()</p>
         </div>
         <h4 class="synopsis-title">Synopsis :</h4>
     </div>
