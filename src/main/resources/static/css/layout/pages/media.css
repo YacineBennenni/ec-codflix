@@ -79,7 +79,6 @@
 }
 .media-detail .synopsis-title{
     font-weight: 600;
-    color: #f72035;
 }
 .media-detail .synopsis-p{
     padding: 1%;
@@ -91,6 +90,42 @@
     padding: 0.2%;
     color: white;
     font-weight: 600;
-    border-radius: 2px;
+    border-radius: 5px;
 }
+.season {
+    margin-top: 20px;
+    background-color: #f72035;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    width: 100%;
+}
+
+.itemEpisode {
+    padding: 20px;
+}
+
+.episodeNumber {
+    color: white;
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+.durationTime {
+    color: white;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.infosEpisode {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -20px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
 

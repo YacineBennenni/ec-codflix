@@ -27,6 +27,32 @@ public class EpisodeDao {
         return episodes;
     }
 
+    public ArrayList<Episode> getEpisodeByMediaId(int id) {
+        ArrayList<Episode> episodes = new ArrayList<Episode>();
+
+        Episode episode = null;
+
+        Connection connection = Database.get().getConnection();
+
+        ResultSet rs = null;
+        String requete = "SELECT * FROM episode WHERE media_id=" + id;
+
+        try {
+            Statement stmt = connection.createStatement();
+            rs = stmt.executeQuery(requete);
+
+            while (rs.next()) {
+                episode = mapToEpisode(rs);
+                System.out.println("+1 episode : " + episode);
+                episodes.add(episode);
+            }
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return episodes;
+    }
+
     public Episode getEpisodeById(int id) {
         Episode episode = null;
 

@@ -22,6 +22,40 @@
             <p class="synopsis-p">$media.getSummary()</p>
         </div>
     </div>
+    <div>
+        #foreach($season in $media.getEpisodes())
+
+        <h2 class="case season">
+            Saison $season[0].getSeason()
+        </h2>
+
+        <div class="media-list fullWidth">
+            #foreach($episode in $season)
+            <a class="item" href="/medias/$episode.getId()">
+                <div class="video">
+                    <div>
+                        <iframe
+                                allowfullscreen="" frameborder="0" src="$episode.getTrailerUrl()">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="title">
+                    $episode.getTitle()
+                </div>
+                <div class="infosEpisode">
+                    <div class="durationTime">
+                        $episode.getTimeMinute() mn
+                    </div>
+                    <div class="episodeNumber">
+                        $episode.getEpisodeNumber()
+                    </div>
+                </div>
+            </a>
+            #end
+        </div>
+
+        #end
+    </div>
 </div>
 
 
