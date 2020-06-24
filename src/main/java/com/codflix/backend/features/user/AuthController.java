@@ -65,4 +65,9 @@ public class AuthController {
 
         return "";
     }
+
+    public Object contact(Request req, Response res) {
+        Map<String, Object> model = new HashMap<>();
+        return Template.render("contact.html", model);
+    }
 }
