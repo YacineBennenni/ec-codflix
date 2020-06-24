@@ -42,3 +42,12 @@
 a.btn.btn-block.contact{
     background-color: #f72035;
 }
+
+.retour{
+    display: inline-block;
+}
+
+a.btn.btn-block{
+    color: white;
+    background-color: grey;
+}
