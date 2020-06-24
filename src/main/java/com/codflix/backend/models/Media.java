@@ -96,11 +96,13 @@ public class Media {
 
     //Return Genre name with genre id
     public String getGenre() {
-        for (Genre genre : genredao.getAllGenres()){
-            if (genre.getId() == this.genreId)
-                return genre.getName();
-        }
+        Genre genre = this.genredao.getGenreById(this.genreId);
+
+        if (genre != null)
+            return genre.getName();
+
         return null;
+
     }
 
     public void setReleaseDate(Date releaseDate) {

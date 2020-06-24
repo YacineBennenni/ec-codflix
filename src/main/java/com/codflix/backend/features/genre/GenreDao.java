@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,5 +32,34 @@ public class GenreDao {
         }
 
         return genres;
+    }
+
+    public Genre getGenreById(int id) {
+
+        Genre genre = null;
+
+        Connection connection = Database.get().getConnection();
+
+        ResultSet rs = null;
+        String requete = "SELECT * FROM genre WHERE id=" + id;
+
+        try {
+            Statement stmt = connection.createStatement();
+            rs = stmt.executeQuery(requete);
+
+            if (rs.next()) {
+                genre = mapToGenre(rs);
+            }
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        return genre;
+    }
+
+    private Genre mapToGenre(ResultSet rs) throws SQLException, ParseException {
+        return new Genre(
+                rs.getInt(1), // id
+                rs.getString(2) // name
+        );
     }
 }

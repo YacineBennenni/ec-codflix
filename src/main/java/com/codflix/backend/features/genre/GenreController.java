@@ -20,4 +20,5 @@ public class GenreController {
         model.put("genres", genres);
         return Template.render("genre_list.html", model);
     }
+
 }
