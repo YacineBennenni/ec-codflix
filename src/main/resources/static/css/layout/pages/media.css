@@ -71,6 +71,8 @@
     width: 10%;
     height: 1px;
     background: #f72035;
+    margin-right: auto;
+    margin-left: auto;
 }
 .media-video{
     text-align: center;

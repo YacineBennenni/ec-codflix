@@ -4,7 +4,6 @@ import com.codflix.backend.core.Template;
 import com.codflix.backend.models.Media;
 import spark.Request;
 import spark.Response;
-import spark.Session;
 
 import java.util.HashMap;
 import java.util.List;
