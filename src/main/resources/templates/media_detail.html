@@ -14,6 +14,11 @@
         <div>
             <p class="date">$media.getType() sorti en $media.getReleaseYear()</p>
             <p>Genre : $media.getGenre()</p>
+            <p>
+                #if($media.isSerie())
+                Durée totale : $media.getAllEpisodesDurationHours()
+            </p>
+            #end
         </div>
         <h4 class="synopsis-title">Synopsis :</h4>
     </div>

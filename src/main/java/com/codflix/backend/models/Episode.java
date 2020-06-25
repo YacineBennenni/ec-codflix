@@ -108,6 +108,7 @@ public class Episode {
         this.trailerUrl = trailerUrl;
     }
 
+    // return title of media form episode
     public String getMediaTitle() {
         Media media = this.mediaDao.getMediaById(this.mediaId);
 

@@ -143,5 +143,29 @@ public class Media {
         }
         return lhm;
     }
+
+    // return true if media is a serie
+    public boolean isSerie() {
+        if (this.type.equals("serie"))
+            return true;
+
+        return false;
+    }
+    // return time of all episode
+    public String getAllEpisodesDurationHours() {
+
+        ArrayList<Episode> episodes = this.episodeDao.getEpisodeByMediaId(this.id);
+        int duration = 0;
+
+        for (Episode episode : episodes) {
+            if (episode != null)
+                duration += episode.getTimeMinute();
+        }
+
+        int hours = ((int) duration / 60);
+        int minutes = duration - (hours * 60);
+
+        return hours + "h" + minutes;
+    }
 }
 
