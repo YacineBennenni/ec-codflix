@@ -51,11 +51,9 @@ public class AuthController {
 
     public String signUp(Request request, Response response) {
         if (!request.requestMethod().equals("POST")) {
-            System.out.println("NOT POST METHOD");
             Map<String, Object> model = new HashMap<>();
             return Template.render("auth_signup.html", model);
         }
-        System.out.println("POST METHOD");
 
         // Get parameters
         Map<String, String> query = URLUtils.decodeQuery(request.body());
@@ -63,9 +61,8 @@ public class AuthController {
         String password = query.get("password");
         String password_confirm = query.get("password_confirm");
 
-        System.out.println("########## email :" + email);
-        System.out.println("########## password :" + password);
-        System.out.println("########## password confirmed:" + password_confirm);
+
+
 
         // if password and the password_confirm is different return error
         if (!password.equals(password_confirm))
@@ -78,9 +75,18 @@ public class AuthController {
         if (!this.userDao.createUserByCredentials(email, password))
             return "Error";
 
-        Map<String, Object> model = new HashMap<>();
-        return Template.render("auth_signup.html", model);
+        User user = userDao.getUserByCredentials(email, password);
 
+        if(user != null){
+            // Create session
+            Session session = request.session(true);
+            session.attribute("user_id", user.getId());
+            response.cookie("/", "user_id", "" + user.getId(), 3600, true);
+
+            response.redirect(Conf.ROUTE_LOGGED_ROOT);
+            return "OK";
+        }
+        return "not ok";
     }
 
     public String logout(Request request, Response response) {

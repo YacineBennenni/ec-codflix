@@ -2,6 +2,7 @@ package com.codflix.backend.features.user;
 
 import com.codflix.backend.core.Database;
 import com.codflix.backend.models.User;
+import com.codflix.backend.utils.passwordChopper;
 
 import java.sql.*;
 
@@ -14,7 +15,7 @@ public class UserDao {
             PreparedStatement st = connection.prepareStatement("SELECT * FROM user WHERE email=? AND password=?");
 
             st.setString(1, email);
-            st.setString(2, password);
+            st.setString(2, passwordChopper.hashPassword(password));
 
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
@@ -37,7 +38,6 @@ public class UserDao {
 
     public User getUserById(int userId) {
         User user = null;
-
         Connection connection = Database.get().getConnection();
         try {
             PreparedStatement st = connection.prepareStatement("SELECT * FROM user WHERE id=?");
@@ -59,11 +59,11 @@ public class UserDao {
         Connection connection = Database.get().getConnection();
 
         try {
-            String requete = "INSERT INTO user (email, password) VALUES ('" + email + "', '" + password + "')";
+            String requete = "INSERT INTO user (email, password) VALUES ('" + email + "', '" + passwordChopper.hashPassword(password) + "')";
             Statement stmt = connection.createStatement();
-            int nbMaj = stmt.executeUpdate(requete);
+            int maj = stmt.executeUpdate(requete);
 
-            if (nbMaj == 1)
+            if (maj == 1)
                 return true;
 
         } catch (SQLException e) {
