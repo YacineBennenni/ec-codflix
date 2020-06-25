@@ -2,6 +2,7 @@ package com.codflix.backend.models;
 
 import com.codflix.backend.features.episode.EpisodeDao;
 import com.codflix.backend.features.genre.GenreDao;
+import com.codflix.backend.features.media.MediaDao;
 
 import java.util.*;
 
@@ -14,10 +15,11 @@ public class Media {
     private Date releaseDate;
     private String summary;
     private String trailerUrl;
+    private int time;
     private GenreDao genredao = new GenreDao();
     private EpisodeDao episodeDao = new EpisodeDao();
 
-    public Media(int id, int genreId, String title, String type, String status, Date releaseDate, String summary, String trailerUrl) {
+    public Media(int id, int genreId, String title, String type, String status, Date releaseDate, String summary, String trailerUrl, int time) {
         this.id = id;
         this.genreId = genreId;
         this.title = title;
@@ -26,6 +28,7 @@ public class Media {
         this.releaseDate = releaseDate;
         this.summary = summary;
         this.trailerUrl = trailerUrl;
+        this.time = time;
     }
 
     @Override
@@ -39,6 +42,7 @@ public class Media {
                 ", releaseDate=" + releaseDate +
                 ", summary='" + summary + '\'' +
                 ", trailerUrl='" + trailerUrl + '\'' +
+                ", time='" + time + '\'' +
                 '}';
     }
 
@@ -102,7 +106,6 @@ public class Media {
             return genre.getName();
 
         return null;
-
     }
 
     public void setReleaseDate(Date releaseDate) {
@@ -123,6 +126,14 @@ public class Media {
 
     public void setTrailerUrl(String trailerUrl) {
         this.trailerUrl = trailerUrl;
+    }
+
+    public int getTime() {
+        return id;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     public LinkedHashMap<Integer, ArrayList<Episode>> getEpisodes() {
@@ -167,5 +178,23 @@ public class Media {
 
         return hours + "h" + minutes;
     }
+
+    public boolean isTimeNotNull() {
+        if (this.time == 0)
+            return false;
+
+        return true;
+    }
+
+    public String getStringTime() {
+        int hours = ((int) this.time/ 60);
+        int minutes = this.time - (hours * 60);
+
+        if (hours == 0)
+            return minutes + "mn";
+
+        return hours + "h" + minutes;
+    }
+
 }
 

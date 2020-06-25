@@ -17,6 +17,7 @@
             <p>
                 #if($media.isSerie())
                 Durée totale : $media.getAllEpisodesDurationHours()
+                #else Durée : $media.getStringTime()
             </p>
             #end
         </div>

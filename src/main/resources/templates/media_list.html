@@ -14,6 +14,70 @@
     </div>
 </div>
 
+<div class="filtreBar">
+    <nav>
+        <ul>
+            <li class="deroulant">
+                <form>
+                    <div>
+                        <div class="genreButton">Genre</div>
+                    </div>
+                </form>
+                <ul class="sous">
+                    #foreach($g in $genre.getAllGenres())
+                    <form action="/medias/" method="get">
+                        <div>
+                            <button type="submit" name="$g.getName()" class="genreButton">$g.getName()</button>
+                        </div>
+                    </form>
+                    #end
+                </ul>
+            </li>
+            <li class="deroulant">
+                <form action="/medias/" method="get">
+                    <div>
+                        <button type="submit" name="films" class="genreButton">Films</button>
+                    </div>
+                </form>
+                <ul class="sous">
+                    #foreach($g in $genre.getAllGenres())
+                    <form action="/medias/" method="get">
+                        <div>
+                            <button type="submit" name="films-$g.getName()" class="genreButton">$g.getName()</button>
+                        </div>
+                    </form>
+                    #end
+                </ul>
+            </li>
+            <li class="deroulant">
+                <form action="/medias/" method="get">
+                    <div>
+                        <button type="submit" name="series" class="genreButton">Séries</button>
+                    </div>
+                </form>
+                <ul class="sous">
+                    #foreach($g in $genre.getAllGenres())
+                    <form action="/medias/" method="get">
+                        <div>
+                            <button type="submit" name="series-$g.getName()" class="genreButton">$g.getName()</button>
+                        </div>
+                    </form>
+                    #end
+                </ul>
+            </li>
+            <li class="deroulant">
+                <form action="/medias/" method="get">
+                    <div>
+                        <button type="submit" name="media" class="genreButton">Effacer les filtre</button>
+                    </div>
+                </form>
+                <ul class="sous">
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+
 <div class="media-list">
     #foreach($media in $medias)
         <a class="item" href="/medias/$media.getId()">
@@ -23,8 +87,20 @@
                             src="$media.getTrailerUrl()" ></iframe>
                 </div>
             </div>
+            <div class="media-type">
+                $media.getType()
+            </div>
             <div class="title">
                 $media.getTitle()
+            </div>
+            <div class="media-year">
+                $media.getReleaseYear()
+            </div>
+            <div class="media-year">
+                #if($media.isTimeNotNull())
+                $media.getStringTime()
+                #else $media.getAllEpisodesDurationHours()
+                #end
             </div>
         </a>
     #end
