@@ -1,0 +1,25 @@
+.profilBody {
+    margin-bottom: 50px;
+}
+
+.divBouton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    width: 20%;
+    min-width: 100px;
+}
+
+.buttonText {
+    color: white;
+    text-align: center;
+}
+
+.centerContent {
+    display: block;
+    justify-content: center;
+    align-items: center;
+}

@@ -10,6 +10,7 @@ import com.codflix.backend.features.history.HistoryController;
 import com.codflix.backend.features.media.MediaController;
 import com.codflix.backend.features.other.HomeController;
 import com.codflix.backend.features.profil.ProfilController;
+import com.codflix.backend.features.profil.SuccessfulModificationController;
 import com.codflix.backend.features.user.AuthController;
 import com.codflix.backend.middlewares.AuthMiddleware;
 import com.codflix.backend.middlewares.LoggerMiddleware;
@@ -38,6 +39,7 @@ public class App {
         ContactController contact = new ContactController();
         EpisodeController episode = new EpisodeController();
         ProfilController profil = new ProfilController();
+        SuccessfulModificationController successfulModification = new SuccessfulModificationController();
 
         // Routes
         // Every request should be mapped here to a controller method
@@ -51,11 +53,14 @@ public class App {
         Spark.get("/genres/", (req, res) -> genre.list(req, res));
         Spark.get("/medias/:id", (req, res) -> media.detail(req, res));
         Spark.get("/medias/", (req, res) -> media.list(req, res));
-        Spark.get("/profil/", (req, res) -> profil.profil(req, res));
         Spark.get("/histories/", (req, res) -> history.list(req, res));
         Spark.get("/contact", (req, res) -> auth.contact(req, res));
         Spark.get("/contact/", (req, res) -> contact.contact(req, res));
         Spark.get("/episode/:id", (req, res) -> episode.detail(req, res));
+        Spark.get("/profil/", (req, res) -> profil.detail(req, res));
+        Spark.get("/profil/mailChanged", (req, res) -> profil.email(req, res));
+        Spark.get("/profil/passwordChanged", (req, res) -> profil.password(req, res));
+        Spark.get("/successfulModification/", (req, res) -> successfulModification.init(req, res));
 
         Spark.get("/", (req, res) -> home.home(req, res));
     }

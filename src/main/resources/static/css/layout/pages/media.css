@@ -242,4 +242,50 @@ div .media-type{
     font-size:16px
 }
 
+.profilBody {
+    margin-bottom: 50px;
+}
+
+.divBouton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    width: 20%;
+    min-width: 100px;
+}
+
+.buttonText {
+    color: white;
+    text-align: center;
+}
+
+.centerContent {
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+.smBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.smMessage {
+    color: white;
+}
+
+.smDiv {
+    width: 70%;
+    height: 50px;
+    background-color: rgb(47, 180, 47);
+    border-radius: 10px;
+    border: 1px black solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 

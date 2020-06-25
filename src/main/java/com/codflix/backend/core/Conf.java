@@ -24,6 +24,7 @@ public class Conf {
 
     // Routes
     public static final String ROUTE_LOGGED_ROOT = "/medias/";
+    public static final String SUCCESSFUL_MODIFICATION = "/successfulModification/";
 
     /**
      * Helper to retrieve an environment variable and use a default value if not found.

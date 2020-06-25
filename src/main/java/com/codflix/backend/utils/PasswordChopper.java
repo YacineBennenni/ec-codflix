@@ -3,7 +3,7 @@ package com.codflix.backend.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class passwordChopper {
+public class PasswordChopper {
 
     public static String hashPassword(String passwordToHash) {
         String generatedPassword = null;

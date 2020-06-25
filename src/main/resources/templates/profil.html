@@ -1,6 +1,54 @@
 #parse("dashboard.html")
 #@mainLayout()
-<body>
-sdfsdfsdf
-</body>
+
+<div class="profilBody">
+    <div>
+        <h1>Mon profil</h1>
+    </div>
+    <div>
+        <p>Bienvenue $user.getEmail()</p>
+    </div>
+    <form action="/profil/mailChanged" method="get" class="custom-form profil centerContent">
+        <div class="form-group">
+            <label for="email">Adresse email</label>
+            <input type="email" placeholder="$user.getEmail() " name="email" value="" id="email" class="form-control"/>
+        </div>
+        <div class="form-group divBouton">
+            <div class="button">
+                <button type="submit" class="btn btn-block bg-red buttonText">
+                    <text class="buttonText">Modifier</text>
+                </button>
+            </div>
+        </div>
+    </form>
+    <form action="/profil/passwordChanged" method="get" class="custom-form profil centerContent">
+        <div class="form-group">
+            <label for="password">Ancien Mot de passe</label>
+            <input type="password" name="password" id="password" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="newPassword">Mot de passe</label>
+            <input type="password" name="newPassword" id="newPassword" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="passwordConfirm">Confirmez votre mot de passe</label>
+            <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control"/>
+        </div>
+        <div class="form-group divBouton">
+            <div class="button">
+                <button type="submit" name="passwordModification" class="btn btn-block bg-red buttonText">
+                    <text class="buttonText">Modifier</text>
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="form-group divBouton">
+        <div class="button">
+            <button type="submit" name="remove" class="btn btn-block bg-red buttonText">
+                <text class="buttonText">Supprimer mon compte</text>
+            </button>
+        </div>
+    </div>
+
+</div>
 #end
