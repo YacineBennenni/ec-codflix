@@ -1,0 +1,27 @@
+#parse("dashboard.html")
+#@mainLayout()
+
+<div class="media-detail">
+    <h1 class="title">
+        $episode.getTitle()
+    </h1>
+    <HR class="separateur">
+    <div class="media-video">
+        <iframe allowfullscreen="" frameborder="0"
+                src="$episode.getTrailerUrl()" ></iframe>
+    </div>
+    <div>
+        <div>
+            <p class="date">Durée: $episode.getTimeMinute()</p>
+            <h4 class="episode-title">$episode.getMediaTitle() </h4>
+            <p>Saison : $episode.getSeason(), Episode $episode.getEpisodeNumber() </p>
+        </div>
+        <h4 class="synopsis-title">Synopsis :</h4>
+    </div>
+    <div>
+        <div>
+            <p class="synopsis-p">$episode.getSummary()</p>
+        </div>
+    </div>
+</div>
+#end

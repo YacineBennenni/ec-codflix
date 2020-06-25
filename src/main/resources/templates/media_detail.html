@@ -31,7 +31,7 @@
 
         <div class="media-list fullWidth">
             #foreach($episode in $season)
-            <a class="item" href="/medias/$episode.getId()">
+            <a class="item" href="/episode/$episode.getId()">
                 <div class="video">
                     <div>
                         <iframe
@@ -41,6 +41,9 @@
                 </div>
                 <div class="title">
                     $episode.getTitle()
+                </div>
+                <div class="summary">
+                    $episode.getSummary()
                 </div>
                 <div class="infosEpisode">
                     <div class="durationTime">

@@ -43,7 +43,6 @@ public class EpisodeDao {
 
             while (rs.next()) {
                 episode = mapToEpisode(rs);
-                System.out.println("+1 episode : " + episode);
                 episodes.add(episode);
             }
         } catch (SQLException | ParseException e) {

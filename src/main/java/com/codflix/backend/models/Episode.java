@@ -5,6 +5,7 @@ import com.codflix.backend.features.genre.GenreDao;
 import java.util.Date;
 
 import com.codflix.backend.features.genre.GenreDao;
+import com.codflix.backend.features.media.MediaDao;
 
 public class Episode {
     private int id;
@@ -15,6 +16,7 @@ public class Episode {
     private int timeMinute;
     private String summary;
     private String trailerUrl;
+    private MediaDao mediaDao = new MediaDao();
 
 
     public Episode(int id, int mediaId, String title, int season, int episodeNumber, int timeMinute, String summary, String trailerUrl) {
@@ -104,5 +106,14 @@ public class Episode {
 
     public void setTrailerUrl(String trailerUrl) {
         this.trailerUrl = trailerUrl;
+    }
+
+    public String getMediaTitle() {
+        Media media = this.mediaDao.getMediaById(this.mediaId);
+
+        if (media != null)
+            return media.getTitle();
+
+        return "";
     }
 }
