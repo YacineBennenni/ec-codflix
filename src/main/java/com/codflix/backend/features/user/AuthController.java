@@ -50,8 +50,37 @@ public class AuthController {
     }
 
     public String signUp(Request request, Response response) {
+        if (!request.requestMethod().equals("POST")) {
+            System.out.println("NOT POST METHOD");
+            Map<String, Object> model = new HashMap<>();
+            return Template.render("auth_signup.html", model);
+        }
+        System.out.println("POST METHOD");
+
+        // Get parameters
+        Map<String, String> query = URLUtils.decodeQuery(request.body());
+        String email = query.get("email");
+        String password = query.get("password");
+        String password_confirm = query.get("password_confirm");
+
+        System.out.println("########## email :" + email);
+        System.out.println("########## password :" + password);
+        System.out.println("########## password confirmed:" + password_confirm);
+
+        // if password and the password_confirm is different return error
+        if (!password.equals(password_confirm))
+            return "Error password : not the same";
+
+        // where email use return error
+        if (this.userDao.emailAlreadyUsed(email))
+            return "Email already used";
+
+        if (!this.userDao.createUserByCredentials(email, password))
+            return "Error";
+
         Map<String, Object> model = new HashMap<>();
         return Template.render("auth_signup.html", model);
+
     }
 
     public String logout(Request request, Response response) {
